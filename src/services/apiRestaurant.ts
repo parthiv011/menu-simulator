@@ -1,3 +1,5 @@
+import type { Order, OrderInput } from "../types/cart";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getMenu() {
@@ -18,7 +20,7 @@ export async function getOrder(id: string) {
   return data;
 }
 
-export async function createOrder(newOrder: string) {
+export async function createOrder(newOrder: OrderInput): Promise<Order> {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
@@ -28,11 +30,12 @@ export async function createOrder(newOrder: string) {
       },
     });
 
-    if (!res.ok) throw Error();
+    if (!res.ok) throw new Error("Failed to create order");
+
     const { data } = await res.json();
-    return data;
+    return data as Order;
   } catch {
-    throw Error("Failed creating your order");
+    throw new Error("Failed creating your order");
   }
 }
 
