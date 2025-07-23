@@ -10,6 +10,7 @@ export interface OrderInput {
   customer: string;
   estimatedDelivery: string;
   orderPrice: number;
+  phone: string;
   priorityPrice: number;
   status: string;
   priority: boolean;
