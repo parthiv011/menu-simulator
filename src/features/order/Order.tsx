@@ -87,7 +87,7 @@ export async function loader({
   params,
 }: LoaderFunctionArgs): Promise<OrderProps> {
   const order = await getOrder(params.orderId!);
-  console.log(order);
+  // console.log(order);
   return order;
 }
 

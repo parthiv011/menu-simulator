@@ -12,6 +12,7 @@ export interface OrderInput {
   orderPrice: number;
   phone: string;
   priorityPrice: number;
+  address: string;
   status: string;
   priority: boolean;
   cart: CartItem[];
